@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['guest']);
+    }
     public function index(){
         return view('auth.register');
     }
@@ -35,6 +38,6 @@ class RegisterController extends Controller
 
         Mail::to($request->email)->send(new EmailConfirmation($request->name, $token));
 
-        return redirect()->route('verify');
+        return redirect()->route('email');
     }
 }

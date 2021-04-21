@@ -9,13 +9,17 @@ use Illuminate\Validation\Rule;
 
 class UpdateUserController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
     public function index(){
         return view('auth.updateuser');
     }
     public function store(Request $request){
         $this->validate($request, [
-            'name'=>'required|max:255',
+            'name'=>['required', Rule::unique('users')->ignore(auth()->user())],
             'email'=>['required', Rule::unique('users')->ignore(auth()->user())],
+            'old_password'=>'required',
             'password'=>'confirmed',
         ]);
 

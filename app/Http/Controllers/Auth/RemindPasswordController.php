@@ -22,6 +22,6 @@ class RemindPasswordController extends Controller
 
         $user->password = Hash::make($request->password);
 
-        dd($user);
+        return redirect()->route('login');
     }
 }

@@ -14,6 +14,10 @@ Route::get('/', [ function(){
     return view('home');
 }]) -> name('home');
 
+Route::get('/check-email', [ function(){
+    return view('auth.checkemail');
+}]) -> name('email');
+
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
