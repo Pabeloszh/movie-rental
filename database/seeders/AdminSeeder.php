@@ -19,6 +19,8 @@ class AdminSeeder extends Seeder
             'email' => 'admin@gmail.com',
             'admin' => 1,
             'password' => bcrypt('admin'),
+            'confirmed' => 1,
+            'confirmation_token' => '123456'
       ]);
     }
 }
