@@ -13,6 +13,7 @@
             <input type="text" name="email" placeholder="Your email" id="email" value="{{old('email')}}">
             <input type="password" name="password" placeholder="Choose password" id="password">
             <input type="submit" id="submit" value="Login">
+            <a href="{{route('forgot')}}">Forgot password?</a>
         </form>
     </div>
 @endsection
