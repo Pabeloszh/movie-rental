@@ -28,7 +28,7 @@
                     @endguest
                     @auth
                     <li class="nav-item">
-                    <a class="nav-link" href="#">Elo anon</a>
+                    <a class="nav-link" href="{{route('update')}}">{{auth()->user()->name}}</a>
                     </li>
                     <form action={{route('logout')}} method="post" class="nav-item">
                         @csrf
