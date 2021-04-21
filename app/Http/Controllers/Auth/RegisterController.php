@@ -37,7 +37,4 @@ class RegisterController extends Controller
 
         return redirect()->route('verify');
     }
-    public function verify(){
-
-    }
 }

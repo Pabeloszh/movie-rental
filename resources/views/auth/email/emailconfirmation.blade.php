@@ -1,14 +1,12 @@
 @component('mail::message')
 # Confirm your email adress
 
-{{$token}} is your token
-{{$name}} is your name
-
+Hello {{$name}} confirm your email adress to start watching movies from our website
 
 @component('mail::button', ['url' => route('verify',['name' => $name, 'token' => $token])])
-View post
+Confirm
 @endcomponent
 
 Thanks,<br>
-{{ config('app.name') }}
+MovieRental Team
 @endcomponent
