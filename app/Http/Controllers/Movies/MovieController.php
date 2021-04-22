@@ -16,11 +16,10 @@ class MovieController extends Controller
         if($search){
             $sArr = [];
             foreach($searchArray as $el) {
-                array_push($sArr, "title ILIKE '%$el%' OR director ILIKE '%$el%' OR genre ILIKE '%$el%'");
+                array_push($sArr, "(title ILIKE '%$el%' OR director ILIKE '%$el%' OR genre ILIKE '%$el%')");
             }
             $query = join (' AND ', $sArr);
             $movies = DB::select('SELECT * FROM MOVIES WHERE ' . $query . "\n");
-            // echo 'SELECT * FROM MOVIES WHERE ' . $query . "\n";
         } else {
             $movies = Movie::orderBy('created_at', 'DESC')->get();
         }
