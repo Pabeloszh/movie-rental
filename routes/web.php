@@ -9,10 +9,11 @@ use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\UpdateUserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RemindPasswordController;
+use App\Http\Controllers\Movies\MovieController;
 
-Route::get('/', [ function(){
-    return view('home');
-}]) -> name('home');
+Route::get('/', [MovieController::class, 'index']) -> name('home');
+
+Route::get('/movie/{movie}', [MovieController::class, 'show'])->name('movie');
 
 Route::get('/check-email', [ function(){
     return view('auth.checkemail');
