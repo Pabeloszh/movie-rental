@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class RemindPasswordController extends Controller
 {
@@ -18,9 +19,11 @@ class RemindPasswordController extends Controller
             'password'=>'required|confirmed',
         ]);
 
-        $user = DB::table('users')->where('name', Crypt::decrypt($prop))->first();
+        $user = User::where('name', Crypt::decrypt($prop))->first();
 
         $user->password = Hash::make($request->password);
+
+        $user->save();
 
         return redirect()->route('login');
     }
