@@ -2,25 +2,28 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\Auth\UpdateUserController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\RemindPasswordController;
+use App\Http\Controllers\Movies\HomeController;
 use App\Http\Controllers\Movies\MovieController;
+use App\Http\Controllers\Movies\RentingController;
 
-Route::get('/', [MovieController::class, 'index']) -> name('home');
+Route::get('/', [HomeController::class, 'index']) -> name('home');
 
-Route::get('/movie/{movie}', [MovieController::class, 'show'])->name('movie');
+Route::get('/movie/{movie}', [MovieController::class, 'index'])->name('movie');
+
+Route::post('/rent/{movie}', [RentingController::class, 'store'])->name('rent');
+
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/check-email', [ function(){
     return view('auth.checkemail');
 }]) -> name('email');
-
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/verify/{name}/{token}', [VerificationController::class, 'verify'])->name('verify');
 
