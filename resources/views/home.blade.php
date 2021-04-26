@@ -9,21 +9,11 @@
                 <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
             </form>
             <div class="d-flex">
-            @foreach($movies as $movie)
-                {{-- <x-post :movie_rec="$movie_rec"/> --}}
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$movie->title}}</h5>
-                        <h6 class="card-subtitle mb-1 text-muted">{{$movie->genre}} {{$movie->premiere}}</h6>
-                        <p class="mb-3 text-muted">{{$movie->director}}</p>
-                        <p class="card-text">{{$movie->desc}}</p>
-                        <a href="#" class="card-link">Read more</a>
-                        @auth
-                        <a href="#" class="btn btn-primary">Rent movie</a>
-                        @endauth
-                    </div>
-                </div>
-            @endforeach
+            @if($movies->count())
+                @foreach($movies as $movie)
+                    <x-movie :movie="$movie"/>
+                @endforeach
+            @endif
             @if(!$movies)
                 <p class="px-1">Sorry, we cant find this film, director or genre...</p>
             @endif
@@ -33,20 +23,22 @@
             <h3>Recently Added Movies</h3>
             @if($movies_rec->count())
                 <div class="d-flex my-3">
-                @foreach($movies_rec as $movie_rec)
-                    {{-- <x-post :movie_rec="$movie_rec"/> --}}
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$movie_rec->title}}</h5>
-                            <h6 class="card-subtitle mb-1 text-muted">{{$movie_rec->genre}} {{$movie_rec->premiere}}</h6>
-                            <p class="mb-3 text-muted">{{$movie_rec->director}}</p>
-                            <p class="card-text">{{$movie_rec->desc}}</p>
-                            <a href="#" class="card-link">Read more</a>
-                            @auth
-                            <a href="#" class="btn btn-primary">Rent movie</a>
-                            @endauth
-                        </div>
-                    </div>
+               @foreach($movies_rec as $movie_rec)
+                    <x-movie :movie="$movie_rec"/>
+                @endforeach
+
+                {{-- {{$posts->links()}} --}}
+                </div>
+            @else
+                <p>There are no movies</p>
+            @endif
+        </div>
+        <div>
+            <h3>Mostly Rented Movies</h3>
+            @if($movies_top->count())
+                <div class="d-flex my-3">
+               @foreach($movies_top as $movie_top)
+                    <x-movie :movie="$movie_top"/>
                 @endforeach
 
                 {{-- {{$posts->links()}} --}}
