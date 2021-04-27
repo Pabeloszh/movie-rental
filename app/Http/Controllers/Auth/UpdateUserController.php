@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rent;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -31,6 +34,17 @@ class UpdateUserController extends Controller
         auth()->user()->save();
 
         return back();
+    }
+    public function destroy(){
+        if(Rent::select('movie_id')->where('user_id', auth()->user()->id)->where('deleted_at', null)->get()->count() === 0){
+            User::where('confirmation_token', auth()->user()->confirmation_token)->delete();
+            auth()->logout();
+            
+            return redirect()->route('home');
+        } else {
+            return back()->with('status', 'You have some movies to give us back');
+        }
+
     }
 
 }
