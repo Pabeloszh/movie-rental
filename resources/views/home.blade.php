@@ -48,4 +48,27 @@
             @endif
         </div>
     </div>
+
+    @auth
+    @if(App\Models\Rent::select('movie_id')->where('user_id', auth()->user()->id)->where('deleted_at', null)->whereMonth('updated_at', '<',  Carbon\Carbon::today()->subMonths(1))->get()->count() !== 0)
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">You have overdued movies</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                One month trial expired for one of your rented movies, please give them back!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I'll do it later</button>
+                <a href="{{route('mymovies')}}" type="button" class="btn btn-primary">See your overdued movies</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    @endif
+    @endauth
+    
 @endsection
