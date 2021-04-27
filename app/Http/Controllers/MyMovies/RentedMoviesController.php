@@ -9,6 +9,9 @@ use Carbon\Carbon;
 
 class RentedMoviesController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
     public function index(){
         $rented = Rent::select('movie_id')->where('user_id', auth()->user()->id)->where('deleted_at', null)->get();
         $history = Rent::select('movie_id')->withTrashed()->where('user_id', auth()->user()->id)->get();

@@ -35,14 +35,16 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('forgot');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'store']);
 
-Route::get('/set-new-password/{prop}', [RemindPasswordController::class, 'index'])->name('new-password');
-Route::post('/set-new-password/{prop}', [RemindPasswordController::class, 'store']);
+Route::get('/setnewpassword/{prop}', [RemindPasswordController::class, 'index'])->name('new-password');
+Route::post('/setnewpassword/{prop}', [RemindPasswordController::class, 'store']);
 
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/update', [UpdateUserController::class, 'index'])->name('update');
 Route::post('/update', [UpdateUserController::class, 'store']);
+Route::delete('/update', [UpdateUserController::class, 'destroy']);
 
 Route::get('/mymovies/rentedmovies', [RentedMoviesController::class, 'index'])->name('mymovies');
 
+Route::get('/admin', [AdminPanelController::class, 'index'])->name('adminpanel');
 
