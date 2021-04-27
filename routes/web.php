@@ -43,6 +43,6 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 Route::get('/update', [UpdateUserController::class, 'index'])->name('update');
 Route::post('/update', [UpdateUserController::class, 'store']);
 
-Route::get('/mymovies/rentedmovies', [RentedMoviesController::class, 'index'])->name('rendedmovies');
+Route::get('/mymovies/rentedmovies', [RentedMoviesController::class, 'index'])->name('mymovies');
 
 
