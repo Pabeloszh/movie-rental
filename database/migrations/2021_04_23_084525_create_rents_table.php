@@ -17,7 +17,7 @@ class CreateRentsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('movie_id');
-            $table->boolean('rented')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -15,16 +15,13 @@ class RentingController extends Controller
             'user_id'=>$request->user()->id,
         ]);
         $movie->increment('rents');
-        // dd($movie->rents);
-        // auth()->user->rents()->create([
-        //     'user_id'=>auth()->user()->id,
-        // ]);
-        // Rent::create([
-        //     'user_id'=>auth()->user()->id,
-        //     'movie_id'=>$movie->id,
-        //     'rented'=>0,
-        // ]);
-        // dd($movie->id, auth()->user()->id);
+
+        return back();
+    }
+    public function back(Movie $movie){
+        $rent = Rent::where('user_id', auth()->user()->id)->where('movie_id', $movie->id);
+        $rent->delete();
+        
         return back();
     }
 }
