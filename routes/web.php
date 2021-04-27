@@ -11,12 +11,14 @@ use App\Http\Controllers\Auth\RemindPasswordController;
 use App\Http\Controllers\Movies\HomeController;
 use App\Http\Controllers\Movies\MovieController;
 use App\Http\Controllers\Movies\RentingController;
+use App\Http\Controllers\MyMovies\RentedMoviesController;
 
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 
 Route::get('/movie/{movie}', [MovieController::class, 'index'])->name('movie');
 
 Route::post('/rent/{movie}', [RentingController::class, 'store'])->name('rent');
+Route::post('/back/{movie}', [RentingController::class, 'back'])->name('back');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
@@ -40,4 +42,7 @@ Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
 Route::get('/update', [UpdateUserController::class, 'index'])->name('update');
 Route::post('/update', [UpdateUserController::class, 'store']);
+
+Route::get('/mymovies/rentedmovies', [RentedMoviesController::class, 'index'])->name('rendedmovies');
+
 
