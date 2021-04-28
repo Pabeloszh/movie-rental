@@ -4,7 +4,7 @@
 Hello {{$name}} we heard that you forgot your password
 
 @component('mail::button', ['url' => route('new-password',['prop' => $prop])])
-Confirm
+Set Password
 @endcomponent
 
 Thanks,<br>

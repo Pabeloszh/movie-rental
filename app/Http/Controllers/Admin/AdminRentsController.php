@@ -10,8 +10,16 @@ use Illuminate\Http\Request;
 
 class AdminRentsController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
     public function index(){
         $lenders = Rent::whereMonth('updated_at', '<',  Carbon::today()->subMonths(1))->get();
+
+        if(auth()->user()->admin === false){
+            return redirect()->route('home');
+        }
+
         $lenders_id = [];
         foreach ($lenders as $value) {
             array_push($lenders_id, $value->user_id);

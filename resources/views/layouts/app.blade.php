@@ -40,10 +40,10 @@
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     @guest
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('register')}}">Register</a>
+                    <a class="nav-link active fw-bold" aria-current="page" href="{{route('register')}}">Register</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link active" href="{{route('login')}}">Login</a>
+                    <a class="nav-link active fw-bold" href="{{route('login')}}">Login</a>
                     </li>
                     @endguest
                     @auth

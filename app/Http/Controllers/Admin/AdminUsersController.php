@@ -8,8 +8,15 @@ use Illuminate\Http\Request;
 
 class AdminUsersController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
     public function index(){
         $users = User::where('admin', false)->get();
+
+        if(auth()->user()->admin === false){
+            return redirect()->route('home');
+        }
 
         return view('admin.adminuser', [
             'users'=>$users,
