@@ -1,11 +1,13 @@
 @props(['movie'=>$movie])
-<div>
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
-            <h5 class="card-title">{{$movie->title}}</h5>
-            <h6 class="card-subtitle mb-1 text-muted">{{$movie->genre}} {{$movie->premiere}}</h6>
-            <p class="mb-3 text-muted">{{$movie->director}}</p>
+    <div class="card col-sm-6 col-lg-4">
+        <div class="card-body d-flex flex-column justify-content-between">
+            <div>
+                <h5 class="card-title">{{$movie->title}}</h5>
+                <h6 class="card-subtitle mb-1 text-muted">{{$movie->genre}} {{$movie->premiere}}</h6>
+                <p class="mb-3 text-muted">{{$movie->director}}</p>
+            </div>
             <p class="card-text">{{$movie->desc}}</p>
+            <div class="d-flex justify-content-between">
             <a href="{{route('movie', ['movie' => $movie->id])}}" class="card-link">Read more</a>
             @auth
             @if(auth()->user()->rents->where('user_id', auth()->user()->id)->where('movie_id', $movie->id)->first() === null)
@@ -20,6 +22,6 @@
             </form>
             @endif
             @endauth
+            </div>
         </div>
     </div>
-</div>

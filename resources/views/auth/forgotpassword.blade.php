@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-light col-10 col-sm-6 col-xl-4 mx-auto px-4 py-3 rounded">
+    <div class="bg-light col-10 col-sm-6 col-xl-4 mx-auto px-4 py-3  mb-4 rounded">
         @if(session('status'))
              <div class="bg-danger text-white px-3 py-2 mb-2 rounded">
                 <i class="fas fa-exclamation-circle"></i> {{session('status')}}

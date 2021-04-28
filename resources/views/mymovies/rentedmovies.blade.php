@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-light col-10 mx-auto px-4 py-3 rounded">
+    <div class="bg-light col-10 mx-auto px-4 py-3 rounded  mb-4">
         <div>
             <h3>Your Rented Movies</h3>
             @if($movies_rented->count())
