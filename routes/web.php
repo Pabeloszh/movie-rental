@@ -12,6 +12,9 @@ use App\Http\Controllers\Movies\HomeController;
 use App\Http\Controllers\Movies\MovieController;
 use App\Http\Controllers\Movies\RentingController;
 use App\Http\Controllers\MyMovies\RentedMoviesController;
+use App\Http\Controllers\Admin\AdminUsersController;
+use App\Http\Controllers\Admin\AdminMoviesController;
+use App\Http\Controllers\Admin\AdminRentsController;
 
 Route::get('/', [HomeController::class, 'index']) -> name('home');
 
@@ -46,5 +49,15 @@ Route::delete('/update', [UpdateUserController::class, 'destroy']);
 
 Route::get('/mymovies/rentedmovies', [RentedMoviesController::class, 'index'])->name('mymovies');
 
-Route::get('/admin', [AdminPanelController::class, 'index'])->name('adminpanel');
+Route::get('/admin/users', [AdminUsersController::class, 'index'])->name('adminusers');
+Route::delete('/admin/users/{user}', [AdminUsersController::class, 'ban'])->name('adminuser.ban');
+
+Route::get('/admin/movies', [AdminMoviesController::class, 'index'])->name('adminmovies');
+Route::post('/admin/movies', [AdminMoviesController::class, 'store'])->name('adminmovies.post');
+Route::delete('/admin/movies/{movie}', [AdminMoviesController::class, 'destroy'])->name('adminmovies.delete');
+Route::get('/admin/movies/{movie}', [AdminMoviesController::class, 'movieindex'])->name('adminmovies.edit');
+Route::post('/admin/movies/{movie}', [AdminMoviesController::class, 'moviestore']);
+
+Route::get('/admin/rents', [AdminRentsController::class, 'index'])->name('adminrents');
+
 
