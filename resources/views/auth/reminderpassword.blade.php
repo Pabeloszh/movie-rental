@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-light col-10 col-sm-6 col-xl-4 mx-auto px-4 py-3 rounded">
+    <div class="bg-light col-10 col-sm-6 col-xl-4 mx-auto px-4 mb-4 py-3 rounded">
         <h3>Select new password</h3>
         <form class="d-flex flex-column mt-3" action="{{route('new-password', ['prop' => $prop])}}" method="post">
             @csrf

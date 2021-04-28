@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-light col-10 col-sm-6 col-xl-4 mx-auto px-4 py-3 rounded">
+    <div class="bg-light col-10 col-sm-6 col-xl-4 mx-auto px-4 py-3 rounded mb-4">
         <h2>{{$movie->title}}</h2>
         <h4>{{$movie->genre}} {{$movie->premiere}}</h4>
         <h4>{{$movie->director}}</h4>

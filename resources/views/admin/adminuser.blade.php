@@ -5,16 +5,16 @@
         <h5>Users</h5>
         @if($users->count() !== 0)
             @foreach($users as $user)
-            <div class="bg-white p-2 d-flex mb-2 justify-content-between">
+            <div class="bg-white p-2 d-flex mb-2 justify-content-between align-items-center rounded">
                 <div class="d-flex justify-content-between @if($user->banned) text-muted @endif">
-                    <p>{{$user->name}}</p>&nbsp;&nbsp;
-                    <p>{{$user->email}}</p>&nbsp;&nbsp;
+                    <p class="m-0 fw-bold">{{$user->name}}</p>&nbsp;
+                    <p class="m-0 d-none d-sm-block">{{$user->email}}</p>&nbsp;
                 </div>
                 <div>
-                    <form action="{{route('adminpanel.ban', ['user' => $user->id])}}" method="post">
+                    <form action="{{route('adminuser.ban', ['user' => $user->id])}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button type="submit"><i class="fas fa-ban text-danger @if($user->banned) text-muted @endif"></i></button>
+                        <button class="btn btn-link fw-bold" type="submit"><i class="fas fa-ban text-danger @if($user->banned) text-muted @endif"></i></button>
                     </form>
                 </div>
             </div>
