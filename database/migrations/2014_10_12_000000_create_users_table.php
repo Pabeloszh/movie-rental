@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->boolean('admin')->default(0);
             $table->boolean('confirmed')->default(0);
             $table->string('confirmation_token');
+            $table->boolean('banned')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

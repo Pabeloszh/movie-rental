@@ -22,11 +22,13 @@
                     <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{route('mymovies')}}">Movies</a>
                     </li>
+                    @auth
                     @if(auth()->user()->admin === true)
                     <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{route('adminpanel')}}">AdminPanel</a>
+                    <a class="nav-link active" aria-current="page" href="{{route('adminusers')}}">AdminPanel</a>
                     </li>
                     @endif
+                    @endauth
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     @guest
