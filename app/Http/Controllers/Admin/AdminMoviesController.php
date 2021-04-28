@@ -8,9 +8,14 @@ use Illuminate\Http\Request;
 
 class AdminMoviesController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth']);
+    }
     public function index(){
         $movies = Movie::get();
-
+        if(auth()->user()->admin === false){
+            return redirect()->route('home');
+        }
 
         return view('admin.adminmovie', [
             'movies'=>$movies,
