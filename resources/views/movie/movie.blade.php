@@ -6,9 +6,11 @@
         <h4>{{$movie->genre}} {{$movie->premiere}}</h4>
         <h4>{{$movie->director}}</h4>
         <p>{{$movie->desc}}</p>
+        @auth
         <form action="{{route('rent', $movie)}}" method="post">
             @csrf
             <button type="submit" class="btn btn-primary @if(auth()->user()->rents->where('user_id', auth()->user()->id)->where('movie_id', $movie->id)->where('rented', false)->first() !== null) disabled @endif">Rent movie</button>
         </form>
+        @endauth
     </div>
 @endsection
