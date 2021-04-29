@@ -24,6 +24,7 @@ class PasswordReminder extends Mailable
     {
         $this->name = $name;
         $this->prop = Crypt::encrypt($name);
+        $this->subject('Email Confirmation');
     }
 
     /**
