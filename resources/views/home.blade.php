@@ -4,10 +4,10 @@
     <div class="bg-light col-10 mx-auto mb-4 px-4 py-3 rounded">
         <div class="mb-5">
             <form class="d-flex my-3" action="{{route('home')}}" method="get">
-                <input class="form-control" value="{{request()->query('search')}}" type="text" name="search" id="search" placeholder="Search movie...">
+                <input class="form-control" value="{{request()->query('search')}}" type="text" name="search" id="search" placeholder="Title / Director / Genre">
                 <button type="submit" class="btn-primary border-0 rounded-end px-3"><i class="fas fa-search"></i></button>
             </form>
-            <div class="container">
+            <div class="container p-0">
                 <div class="row">
                 @if($movies->count() > 0)
                     @foreach($movies as $movie)

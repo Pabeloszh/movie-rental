@@ -24,6 +24,7 @@ class EmailConfirmation extends Mailable
     {
         $this->token = $token;
         $this->name = $name;
+        $this->subject('Email Confirmation');
     }
 
     /**

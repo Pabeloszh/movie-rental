@@ -1,5 +1,5 @@
 @props(['movie'=>$movie])
-    <div class="card col-sm-6 col-lg-4">
+    <div class="card col-sm-6 col-lg-6 col-xl-4">
         <div class="card-body d-flex flex-column justify-content-between">
             <div>
                 <h5 class="card-title">{{$movie->title}}</h5>
